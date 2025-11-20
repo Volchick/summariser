@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.ipynb_checkpoints/
+summarizator/__pycache__/
+summarizator/DOWNLOAD_DIR/
