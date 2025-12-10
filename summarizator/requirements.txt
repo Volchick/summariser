@@ -1,0 +1,8 @@
+fastapi
+sqlalchemy
+yt-dlp
+moviepy
+ffmpeg-python
+faster-whisper
+transformers
+torch
