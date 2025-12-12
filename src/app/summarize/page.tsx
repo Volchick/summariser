@@ -51,8 +51,8 @@ export default function SummarizePage() {
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">Video Summarizer</h1>
-          <p className="text-slate-400 text-lg">Paste a video link and get an instant AI-powered summary</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">Суммаризатор видео</h1>
+          <p className="text-slate-400 text-lg">Вставьте ссылку на видео и получите мгновенное резюме с помощью ИИ</p>
         </div>
 
         {/* Input Form */}
@@ -61,7 +61,7 @@ export default function SummarizePage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="url" className="block text-sm font-medium text-slate-200 mb-2">
-                  Video URL
+                  Ссылка на видео
                 </label>
                 <Input
                   id="url"
@@ -88,12 +88,12 @@ export default function SummarizePage() {
                 {isLoading ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Processing...
+                    Обработка...
                   </>
                 ) : (
                   <>
                     <Play className="w-4 h-4 mr-2" />
-                    Summarize Video
+                    Суммаризировать видео
                   </>
                 )}
               </Button>
@@ -107,7 +107,7 @@ export default function SummarizePage() {
             <div className="flex items-center justify-between p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
               <div className="flex items-center gap-2">
                 <Check className="w-5 h-5 text-green-400" />
-                <span className="text-green-400 font-medium">Video summarized successfully!</span>
+                <span className="text-green-400 font-medium">Видео успешно суммаризировано!</span>
               </div>
             </div>
 
@@ -116,7 +116,7 @@ export default function SummarizePage() {
               <p className="text-slate-400 text-sm mb-6">ID: {result.videoId}</p>
 
               <div className="bg-slate-700/50 rounded-lg p-6 mb-8">
-                <h3 className="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-wide">Summary</h3>
+                <h3 className="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-wide">Резюме</h3>
                 <p className="text-slate-200 leading-relaxed text-base">{result.summary}</p>
               </div>
 
@@ -128,11 +128,11 @@ export default function SummarizePage() {
                   }}
                   className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all"
                 >
-                  Summarize Another
+                  Суммаризировать другое
                 </Button>
                 <Link href="/history" className="flex-1">
                   <Button className="w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-all">
-                    View History
+                    История
                   </Button>
                 </Link>
               </div>

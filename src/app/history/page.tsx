@@ -22,10 +22,20 @@ export default function HistoryPage() {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await fetch("/api/history")
+        const response = await fetch("/api/summarize/all")
         if (!response.ok) throw new Error("Failed to fetch history")
         const data = await response.json()
-        setItems(data)
+        
+        // Форматируем данные для отображения
+        const formattedData = data.map((item: any) => ({
+          id: item.id,
+          title: item.url, // Используем URL как заголовок
+          url: item.url,
+          summary: item.summary,
+          createdAt: item.createdAt,
+        }))
+        
+        setItems(formattedData)
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred")
       } finally {
@@ -53,11 +63,11 @@ export default function HistoryPage() {
         <div className="mb-8">
           <Link href="/summarize">
             <Button variant="ghost" className="text-blue-400 hover:text-blue-300 mb-4">
-              ← Back to Summarizer
+              ← Назад к суммаризатору
             </Button>
           </Link>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Summary History</h1>
-          <p className="text-slate-400">Your previously summarized videos</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">История резюме</h1>
+          <p className="text-slate-400">Ваши ранее суммаризированные видео</p>
         </div>
 
         {error && <Card className="bg-red-500/10 border-red-500/20 p-4 mb-6 text-red-400">{error}</Card>}
@@ -65,16 +75,16 @@ export default function HistoryPage() {
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-12">
             <Loader2 className="w-8 h-8 text-blue-500 animate-spin mb-4" />
-            <p className="text-slate-400">Loading history...</p>
+            <p className="text-slate-400">Загрузка истории...</p>
           </div>
         ) : items.length === 0 ? (
           <Card className="bg-slate-800 border-slate-700 p-12 text-center">
             <Play className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">No summaries yet</h3>
-            <p className="text-slate-400 mb-6">Start by summarizing your first video</p>
+            <h3 className="text-xl font-semibold text-white mb-2">Пока нет резюме</h3>
+            <p className="text-slate-400 mb-6">Начните с суммаризации вашего первого видео</p>
             <Link href="/summarize">
               <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg">
-                Summarize a Video
+                Суммаризировать видео
               </Button>
             </Link>
           </Card>
