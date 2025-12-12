@@ -76,7 +76,7 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ id: st
       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-6">
         <div className="text-center">
           <Loader2 className="w-8 h-8 text-blue-500 animate-spin mx-auto mb-4" />
-          <p className="text-slate-400">Loading summary...</p>
+          <p className="text-slate-400">Загрузка резюме...</p>
         </div>
       </div>
     )
@@ -88,13 +88,13 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ id: st
         <div className="max-w-2xl mx-auto">
           <Link href="/history">
             <Button variant="ghost" className="text-blue-400 hover:text-blue-300 mb-4">
-              ← Back to History
+              ← Назад к истории
             </Button>
           </Link>
           <Card className="bg-slate-800 border-slate-700 p-8 text-center">
-            <p className="text-red-400 mb-4">{error || "Summary not found"}</p>
+            <p className="text-red-400 mb-4">{error || "Резюме не найдено"}</p>
             <Link href="/history">
-              <Button className="bg-blue-600 hover:bg-blue-700">Return to History</Button>
+              <Button className="bg-blue-600 hover:bg-blue-700">Вернуться к истории</Button>
             </Link>
           </Card>
         </div>
@@ -108,7 +108,7 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ id: st
         {/* Navigation */}
         <Link href="/history">
           <Button variant="ghost" className="text-blue-400 hover:text-blue-300 mb-8">
-            ← Back to History
+            ← Назад к истории
           </Button>
         </Link>
 
@@ -119,11 +119,11 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ id: st
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-slate-400">
               <div>
                 <p className="mb-2">
-                  <span className="text-slate-500">Summarized:</span> {new Date(detail.createdAt).toLocaleDateString()}{" "}
-                  at {new Date(detail.createdAt).toLocaleTimeString()}
+                  <span className="text-slate-500">Суммаризировано:</span> {new Date(detail.createdAt).toLocaleDateString()}{" "}
+                  в {new Date(detail.createdAt).toLocaleTimeString()}
                 </p>
                 <p className="break-all text-xs">
-                  <span className="text-slate-500">Source:</span> {detail.url}
+                  <span className="text-slate-500">Источник:</span> {detail.url}
                 </p>
               </div>
             </div>
@@ -132,13 +132,13 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ id: st
           {/* Summary Content */}
           <div className="bg-slate-700/50 rounded-lg p-6 mb-8">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Summary</h2>
+              <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Резюме</h2>
               <button
                 onClick={handleCopy}
                 className="flex items-center gap-2 px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
               >
                 <Copy className="w-4 h-4" />
-                {copied ? "Copied!" : "Copy"}
+                {copied ? "Скопировано!" : "Копировать"}
               </button>
             </div>
             <p className="text-slate-200 leading-relaxed text-base whitespace-pre-wrap">{detail.summary}</p>
@@ -148,7 +148,7 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ id: st
           <div className="flex flex-col sm:flex-row gap-3">
             <Link href="/summarize" className="flex-1">
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg">
-                Summarize Another
+                Суммаризировать другое
               </Button>
             </Link>
             <button
@@ -156,7 +156,7 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ id: st
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg font-semibold transition-colors"
             >
               <Trash2 className="w-4 h-4" />
-              Delete
+              Удалить
             </button>
             <button
               onClick={() => {
@@ -171,7 +171,7 @@ export default function HistoryDetailPage({ params }: { params: Promise<{ id: st
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-colors"
             >
               <Share2 className="w-4 h-4" />
-              Share
+              Поделиться
             </button>
           </div>
         </Card>
